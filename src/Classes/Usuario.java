@@ -8,8 +8,8 @@ public abstract class Usuario extends Pessoa {
     protected List<Livro> livros;
 
 
-    public Usuario(int id, String cpf, String nome,LocalDate dataNasc,String email, int matricula){
-        super(id,cpf,nome,dataNasc);
+    public Usuario(String cpf, String nome,LocalDate dataNasc,String email, int matricula){
+        super(cpf,nome,dataNasc);
         this.email=email;
         this.matricula=matricula;
         this.livros= new ArrayList<>();
