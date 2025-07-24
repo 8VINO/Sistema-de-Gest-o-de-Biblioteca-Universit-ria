@@ -154,6 +154,18 @@ public class ControllerLivro {
             System.out.println("-------------------------------------------------");
         }
     }
+    public static Livro buscarLivroPorTombo(int tomboParam) {
+
+
+
+        for (Livro livro : livrosCadastrados) {
+            if (livro.getTombo() == tomboParam) {
+                return livro;
+            }
+        }
+        return null;
+    }
+
 
     public static void editarLivro() {
         System.out.print("Digite o tombo do livro que deseja editar: ");

@@ -4,6 +4,8 @@ import Classes.Livro;
 import Classes.Usuario;
 import Classes.Aluno;
 import Controllers.EmprestimoController;
+import Controllers.ControllerUsuario;
+import Controllers.ControllerLivro;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -55,7 +57,7 @@ public class menuEmprestimo {
             }
         } while (opcao != 0);
 
-        scanner.close();
+
     }
 
     private void realizarEmprestimo(Scanner scanner) {
@@ -63,17 +65,17 @@ public class menuEmprestimo {
         int matricula = scanner.nextInt();
         scanner.nextLine();
 
-        Usuario usuario = buscarUsuario(matricula);
+        Usuario usuario=ControllerUsuario.buscarUsuarioPorMatricula(matricula);
         if (usuario == null) {
             System.out.println("Usuário não encontrado.");
             return;
         }
 
-        System.out.print("Digite o ID do livro: ");
-        int livroId = scanner.nextInt();
+        System.out.print("Digite o tombo do livro: ");
+        int tombo = scanner.nextInt();
         scanner.nextLine();
 
-        Livro livro = buscarLivro(livroId);
+        Livro livro = ControllerLivro.buscarLivroPorTombo(tombo);
         if (livro == null) {
             System.out.println("Livro não encontrado.");
             return;
@@ -87,17 +89,17 @@ public class menuEmprestimo {
         int matricula = scanner.nextInt();
         scanner.nextLine();
 
-        Usuario usuario = buscarUsuario(matricula);
+        Usuario usuario=ControllerUsuario.buscarUsuarioPorMatricula(matricula);
         if (usuario == null) {
             System.out.println("Usuário não encontrado.");
             return;
         }
 
-        System.out.print("Digite o ID do livro a devolver: ");
-        int livroId = scanner.nextInt();
+        System.out.print("Digite o tombo do livro a devolver: ");
+        int livroTombo = scanner.nextInt();
         scanner.nextLine();
 
-        Livro livro = buscarLivro(livroId);
+        Livro livro = ControllerLivro.buscarLivroPorTombo(livroTombo);
         if (livro == null) {
             System.out.println("Livro não encontrado.");
             return;
@@ -123,7 +125,7 @@ public class menuEmprestimo {
         int matricula = scanner.nextInt();
         scanner.nextLine();
 
-        Usuario usuario = buscarUsuario(matricula);
+        Usuario usuario=ControllerUsuario.buscarUsuarioPorMatricula(matricula);
         if (usuario == null) {
             System.out.println("Usuário não encontrado.");
             return;
@@ -131,14 +133,7 @@ public class menuEmprestimo {
         controller.listarEmprestimosDoUsuario(usuario);
     }
 
-    private Usuario buscarUsuario(int matricula) {
-        for (Usuario u : usuarios) {
-            if (u.getMatricula() == matricula) {
-                return u;
-            }
-        }
-        return null;
-    }
+
 
     private Livro buscarLivro(int livroId) {
         for (Livro l : livros) {

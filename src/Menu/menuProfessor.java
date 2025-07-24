@@ -2,7 +2,7 @@ package Menu;
 
 import Classes.Professor;
 import Controllers.controllerProfessor;
-
+import Controllers.ControllerUsuario;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -47,6 +47,7 @@ public class menuProfessor {
                     Professor p = new Professor(cpf, nome, dataNasc, email, matricula, formacao);
 
                     controllerProfessor.adicionarProfessor(p);
+                    ControllerUsuario.adicionarUsuario(p);
                 }
                 case 2 -> controllerProfessor.listarProfessores();
                 case 3 -> {
