@@ -1,6 +1,7 @@
 package Classes;
 
 public class Livro {
+    private static int proximoId = 1;
     private int idLivro;
     private String titulo;
     private int tombo;
@@ -10,11 +11,24 @@ public class Livro {
     private Categoria categoria;
 
     public Livro(String titulo, Autor[] autores, Editora editora, int tombo) {
+        idLivro = proximoId++;
         this.disponibilidade = true;
         this.titulo = titulo;
         this.autores = autores;
         this.editora = editora;
         this.tombo = tombo;
+
+        editora.adicionarLivro(this);
+        for (Autor autor : autores) {
+            autor.adicionarLivro(this);
+        }
+    }
+
+    public Livro(String titulo, Autor[] autores, Editora editora) {
+        this.disponibilidade = true;
+        this.titulo = titulo;
+        this.autores = autores;
+        this.editora = editora;
 
         editora.adicionarLivro(this);
         for (Autor autor : autores) {
