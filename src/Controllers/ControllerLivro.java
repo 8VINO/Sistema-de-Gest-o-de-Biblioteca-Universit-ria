@@ -2,6 +2,7 @@ package Controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 import Classes.Autor;
@@ -33,37 +34,52 @@ public class ControllerLivro {
         System.out.println(objAutores.toArray(new Autor[0]));
 
         // Editora
-        Editora editora;
+        Editora editora = null;
         while (true){
             System.out.print("Nome da editora: ");
             String nomeEditora = scanner.nextLine();
+            if (Objects.equals(nomeEditora, "sair"))  break;
             try {
                 editora = EditoraController.buscarEditora(nomeEditora);
                 break;
             } catch (RuntimeException e) {
                 System.out.println(e.getMessage());
-                System.out.println("Selecione uma categoria válida.");
+                System.out.println("Digite 'sair' para cancelar o cadastro.");
             }
-
         }
-
+        if (Objects.equals(editora, null)) return;
 
         // Categoria
-        System.out.print("Nome da categoria: ");
-        String nomeCategoria = scanner.nextLine();
-        Categoria categoria = CategoriaController.buscarCategoria(nomeCategoria);
+
+        Categoria categoria = null;
+        while (true){
+            System.out.print("Nome da categoria: ");
+            String nomeCategoria = scanner.nextLine();
+            if (Objects.equals(nomeCategoria, "sair"))  break;
+            try {
+                categoria = CategoriaController.buscarCategoria(nomeCategoria);
+                break;
+            } catch (RuntimeException e) {
+                System.out.println();
+                System.out.println(e.getMessage());
+                System.out.println("Digite 'sair' para cancelar o cadastro.");
+            }
+        }
+        if (Objects.equals(categoria, null)) return;
+
+
 
         // Criar livro
         Livro livro = new Livro(titulo, objAutores.toArray(new Autor[0]), editora, tombo);
         livro.setCategoria(categoria);
 
         livrosCadastrados.add(livro);
-        System.out.println("✅ Livro cadastrado com sucesso!");
+        System.out.println("Livro cadastrado com sucesso!");
     }
 
 
     public static void removerLivroPorTombo() {
-        System.out.print("Digite o tombo do livro a ser removido: ");
+        System.out.print("\n Digite o tombo do livro a ser removido: ");
         int tombo = Integer.parseInt(scanner.nextLine());
 
         Livro livroEncontrado = null;
@@ -114,6 +130,27 @@ public class ControllerLivro {
     }
 
     public static void listarLivros() {
+        if (livrosCadastrados.isEmpty()) {
+            System.out.println("Nenhum livro cadastrado :(");
+            return;
+        }
+
+        System.out.println("\n -- Lista de Livros:");
+        for (Livro livro : livrosCadastrados) {
+            System.out.println("- Título: " + livro.getTitulo());
+            System.out.println("  Tombo: " + livro.getTombo());
+            System.out.println("  Editora: " + livro.getEditora().getNome());
+            System.out.println("  Categoria: " + livro.getCategoria().getNome());
+            System.out.print("  Autores: ");
+            for (Autor autor : livro.getAutores()) {
+                System.out.print(autor.getNome() + " ");
+            }
+            System.out.println("\n  Disponível: " + (livro.isDisponivel() ? "Sim" : "Não"));
+            System.out.println("-------------------------------------------------");
+        }
+    }
+
+    public static void editarLivro() {
     }
 }
 

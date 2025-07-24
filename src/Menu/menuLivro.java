@@ -9,12 +9,14 @@ public class menuLivro {
     public static void exibirMenuLivro() {
         int opcao;
         do {
-            System.out.println("\n📚 Sistema de Biblioteca");
+            System.out.println("\n     -- Gerenciamento de Livros --");
             System.out.println("1 - Cadastrar Livro");
             System.out.println("2 - Listar Livros");
+            System.out.println("3 - Editar Livro");
+            System.out.println("4 - Deletar Livro");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
-            opcao = Integer.parseInt(scanner.nextLine());
+            opcao = scanner.nextInt();
 
             switch (opcao) {
                 case 1:
@@ -22,6 +24,12 @@ public class menuLivro {
                     break;
                 case 2:
                     ControllerLivro.listarLivros();
+                    break;
+                case 3:
+                    ControllerLivro.editarLivro();
+                    break;
+                case 4:
+                    ControllerLivro.removerLivroPorTombo();
                     break;
                 case 0:
                     System.out.println("Saindo...");

@@ -26,22 +26,22 @@ public class CategoriaController {
         String nome = scanner.nextLine();
 
         if (existeCategoria(nome)) {
-            System.out.println("⚠️ Categoria já cadastrada.");
+            System.out.println("Categoria já cadastrada.");
             return;
         }
 
         Categoria categoria = new Categoria(nome);
         categoriasCadastradas.add(categoria);
-        System.out.println("✅ Categoria cadastrada com sucesso!");
+        System.out.println("Categoria cadastrada com sucesso!");
     }
 
     public static void listarCategorias() {
         if (categoriasCadastradas.isEmpty()) {
-            System.out.println("📭 Nenhuma categoria cadastrada.");
+            System.out.println("Nenhuma categoria cadastrada.");
             return;
         }
 
-        System.out.println("\n📂 Categorias cadastradas:");
+        System.out.println("\nCategorias cadastradas:");
         for (Categoria c : categoriasCadastradas) {
             System.out.println("- " + c.getNome() + " (Livros: " + c.getLivros().size() + ")");
         }
@@ -61,13 +61,13 @@ public class CategoriaController {
 
         if (encontrada != null) {
             if (!encontrada.getLivros().isEmpty()) {
-                System.out.println("❌ Não é possível remover a categoria. Existem livros associados a ela.");
+                System.out.println("Não é possível remover a categoria. Existem livros associados a ela.");
                 return;
             }
             categoriasCadastradas.remove(encontrada);
-            System.out.println("✅ Categoria removida com sucesso.");
+            System.out.println("Categoria removida com sucesso.");
         } else {
-            System.out.println("⚠️ Categoria não encontrada.");
+            System.out.println("Categoria não encontrada.");
         }
     }
 
