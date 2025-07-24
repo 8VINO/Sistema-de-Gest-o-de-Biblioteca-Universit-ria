@@ -2,6 +2,7 @@ package Menu;
 
 import Classes.Aluno;
 import Controllers.controllerAluno;
+import Controllers.ControllerUsuario;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -48,6 +49,7 @@ public class menuAluno {
 
                     Aluno a = new Aluno(cpf, nome, dataNasc, email, matricula, curso);
                     controllerAluno.adicionarAluno(a);
+                    ControllerUsuario.adicionarUsuario(a);
                 }
                 case 2 -> controllerAluno.listarAlunos();
                 case 3 -> {
