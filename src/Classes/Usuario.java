@@ -6,6 +6,7 @@ public abstract class Usuario extends Pessoa {
     protected String email;
     protected int matricula;
     protected List<Livro> livros;
+     // <- NOVO
 
 
     public Usuario(String cpf, String nome,LocalDate dataNasc,String email, int matricula){
@@ -20,5 +21,8 @@ public abstract class Usuario extends Pessoa {
     }
     public void devolver(Livro livro){
         livros.remove(livro);
+    }
+    public int getMatricula(){
+        return matricula;
     }
 }

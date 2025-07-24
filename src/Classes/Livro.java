@@ -58,4 +58,7 @@ public class Livro {
     public Autor[] getAutores() {
         return autores;
     }
+    public int getLivroId(){
+        return idLivro;
+    }
 }
