@@ -1,9 +1,12 @@
 package Classes;
 
+import Interfaces.GerenciaLivros;
+import Interfaces.Nomeavel;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Categoria {
+public class Categoria  implements Nomeavel, GerenciaLivros {
     private String nome;
     private List<Livro> livros = new ArrayList<>();
 

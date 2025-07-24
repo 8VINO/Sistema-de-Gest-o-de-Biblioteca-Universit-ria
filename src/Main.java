@@ -11,8 +11,7 @@ import Classes.Livro;
 
 public class Main {
     public static void main(String[] args) {
-        menuProfessor.exibirMenu();
-        menuAluno.exibirMenu();
+
         List<Usuario> usuarios = new ArrayList<>();
         List<Livro> livros = new ArrayList<>();
 
