@@ -1,4 +1,61 @@
 package Classes;
 
 public class Livro {
+    private int idLivro;
+    private String titulo;
+    private int tombo;
+    private boolean disponibilidade;
+    private Autor[] autores;
+    private Editora editora;
+    private Categoria categoria;
+
+    public Livro(String titulo, Autor[] autores, Editora editora, int tombo) {
+        this.disponibilidade = true;
+        this.titulo = titulo;
+        this.autores = autores;
+        this.editora = editora;
+        this.tombo = tombo;
+
+        editora.adicionarLivro(this);
+        for (Autor autor : autores) {
+            autor.adicionarLivro(this);
+        }
+    }
+
+    public void setTombo(int tombo) {
+        this.tombo = tombo;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+        categoria.adicionarLivro(this);
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public int getTombo() {
+        return tombo;
+    }
+
+    public boolean isDisponivel() {
+        return disponibilidade;
+    }
+
+    public void setDisponibilidade(boolean d) {
+        this.disponibilidade = d;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public Editora getEditora() {
+        return editora;
+    }
+
+    public Autor[] getAutores() {
+        return autores;
+    }
 }
