@@ -31,6 +31,17 @@ public class Livro {
         categoria.adicionarLivro(this);
     }
 
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setEditora(Editora editora) {
+        this.editora = editora;
+    }
+
+    public void setAutores(Autor[] autores) {
+        this.autores = autores;
+    }
     public String getTitulo() {
         return titulo;
     }

@@ -7,7 +7,7 @@ public class menuLivro {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void exibirMenuLivro() {
-        int opcao;
+        int opcao = 0;
         do {
             System.out.println("\n     -- Gerenciamento de Livros --");
             System.out.println("1 - Cadastrar Livro");
@@ -16,7 +16,14 @@ public class menuLivro {
             System.out.println("4 - Deletar Livro");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
-            opcao = scanner.nextInt();
+
+
+            try {
+                opcao = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Opção inválida! Digite um número.");
+                continue;
+            }
 
             switch (opcao) {
                 case 1:

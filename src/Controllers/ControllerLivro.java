@@ -20,7 +20,12 @@ public class ControllerLivro {
         String titulo = scanner.nextLine();
 
         System.out.print("Tombo (código único do livro): ");
-        int tombo = Integer.parseInt(scanner.nextLine());
+        int tombo = -1;
+        try {
+            tombo = Integer.parseInt(scanner.nextLine());
+        } catch (Exception e){
+            System.out.println("O código do tombo deve ser composto por números.");
+        }
 
         // Autores
         System.out.print("Nome(s) do autor (separados por vírgula): ");
@@ -93,9 +98,9 @@ public class ControllerLivro {
 
         if (livroEncontrado != null) {
             livrosCadastrados.remove(livroEncontrado);
-            System.out.println("Livro removido com sucesso!");
+            System.out.println("\nLivro removido com sucesso!");
         } else {
-            System.out.println("Livro com tombo " + tombo + " não encontrado.");
+            System.out.println("\n Livro com tombo " + tombo + " não encontrado.");
         }
     }
 
@@ -106,7 +111,7 @@ public class ControllerLivro {
         boolean encontrado = false;
         for (Livro livro : livrosCadastrados) {
             if (livro.getTitulo().equalsIgnoreCase(titulo)) {
-                System.out.println("📘 Livro encontrado:");
+                System.out.println("Livro encontrado:");
                 System.out.println("Tombo: " + livro.getTombo());
                 System.out.println("Editora: " + livro.getEditora().getNome());
                 System.out.println("Categoria: " + livro.getCategoria().getNome());
@@ -135,9 +140,9 @@ public class ControllerLivro {
             return;
         }
 
-        System.out.println("\n -- Lista de Livros:");
+        System.out.println("\n    -- Lista de Livros:  \n");
         for (Livro livro : livrosCadastrados) {
-            System.out.println("- Título: " + livro.getTitulo());
+            System.out.println("  Título: " + livro.getTitulo());
             System.out.println("  Tombo: " + livro.getTombo());
             System.out.println("  Editora: " + livro.getEditora().getNome());
             System.out.println("  Categoria: " + livro.getCategoria().getNome());
@@ -151,6 +156,80 @@ public class ControllerLivro {
     }
 
     public static void editarLivro() {
+        System.out.print("Digite o tombo do livro que deseja editar: ");
+
+        int tombo = -1;
+        try {
+            tombo = Integer.parseInt(scanner.nextLine());
+        } catch (Exception e){
+            System.out.println("O código do tombo deve ser composto por números.");
+        }
+
+        Livro livroEncontrado = null;
+
+        for (Livro livro : livrosCadastrados) {
+            if (livro.getTombo() == tombo) {
+                livroEncontrado = livro;
+                break;
+            }
+        }
+
+        if (livroEncontrado == null) {
+            System.out.println("Livro com tombo " + tombo + " não encontrado.");
+            return;
+        }
+
+        System.out.println("Editando o livro: " + livroEncontrado.getTitulo());
+
+        // Editar título
+        System.out.print("Novo título (ou pressione Enter para manter): ");
+        String novoTitulo = scanner.nextLine();
+        if (!novoTitulo.isBlank()) {
+            livroEncontrado.setTitulo(novoTitulo);
+        }
+
+        // Editar autores
+        System.out.print("Novo(s) autor(es), separados por vírgula (ou Enter para manter): ");
+        String novosAutores = scanner.nextLine();
+        if (!novosAutores.isBlank()) {
+            String[] nomesAutores = novosAutores.split(",\\s*");
+            ArrayList<Autor> novaLista = new ArrayList<>();
+            for (String nomeAutor : nomesAutores) {
+                Autor autor = ControllerAutor.buscarOuCriarAutor(nomeAutor.trim());
+                novaLista.add(autor);
+            }
+            livroEncontrado.setAutores(novaLista.toArray(new Autor[0]));
+        }
+
+        // Editar editora
+        while (true) {
+            System.out.print("Nova editora (ou Enter para manter): ");
+            String nomeEditora = scanner.nextLine();
+            if (nomeEditora.isBlank()) break;
+            try {
+                Editora novaEditora = EditoraController.buscarEditora(nomeEditora);
+                livroEncontrado.setEditora(novaEditora);
+                break;
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        // Editar categoria
+        while (true) {
+            System.out.print("Nova categoria (ou Enter para manter): ");
+            String nomeCategoria = scanner.nextLine();
+            if (nomeCategoria.isBlank()) break;
+            try {
+                Categoria novaCategoria = CategoriaController.buscarCategoria(nomeCategoria);
+                livroEncontrado.setCategoria(novaCategoria);
+                break;
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        System.out.println("Livro atualizado com sucesso!");
     }
 }
 

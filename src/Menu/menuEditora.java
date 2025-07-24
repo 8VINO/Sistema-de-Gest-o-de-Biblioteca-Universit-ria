@@ -8,7 +8,7 @@ public class menuEditora {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void exibirMenuEditora() {
-        int opcao;
+        int opcao = 0;
 
         do {
             System.out.println("\n     -- Gerenciamento de Editoras --");
@@ -18,7 +18,13 @@ public class menuEditora {
             System.out.println("4 - Buscar editora por nome");
             System.out.println("0 - Voltar ao menu principal");
             System.out.print("Escolha uma opção: ");
-            opcao = Integer.parseInt(scanner.nextLine());
+
+            try {
+                opcao = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Opção inválida! Digite um número.");
+                continue;
+            }
 
             switch (opcao) {
                 case 1:

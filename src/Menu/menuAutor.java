@@ -8,7 +8,7 @@ public class menuAutor {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void exibirMenuAutor() {
-        int opcao;
+        int opcao = 0;
 
         do {
             System.out.println("\n     -- Gerenciamento de Autor --");
@@ -18,7 +18,13 @@ public class menuAutor {
             System.out.println("4 - Buscar autor por nome");
             System.out.println("0 - Voltar ao menu principal");
             System.out.print("Escolha uma opção: ");
-            opcao = Integer.parseInt(scanner.nextLine());
+
+            try {
+                opcao = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Opção inválida! Digite um número.");
+                continue;
+            }
 
             switch (opcao) {
                 case 1:
