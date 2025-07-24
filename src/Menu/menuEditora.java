@@ -14,15 +14,16 @@ public class menuEditora {
             System.out.println("\n     -- Gerenciamento de Editoras --");
             System.out.println("1 - Cadastrar editora");
             System.out.println("2 - Listar editoras");
-            System.out.println("3 - Remover editora");
-            System.out.println("4 - Buscar editora por nome");
+            System.out.println("3 - Editar editora");
+            System.out.println("4 - Deletar editora");
+            System.out.println("5 - Buscar editora por nome");
             System.out.println("0 - Voltar ao menu principal");
             System.out.print("Escolha uma opção: ");
 
             try {
                 opcao = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("Opção inválida! Digite um número.");
+                System.out.println("\nOpção inválida! Digite um número.");
                 continue;
             }
 
@@ -34,9 +35,12 @@ public class menuEditora {
                     EditoraController.listarEditoras();
                     break;
                 case 3:
-                    EditoraController.removerEditoraPorNome();
+                    EditoraController.editarEditora();
                     break;
                 case 4:
+                    EditoraController.removerEditoraPorNome();
+                    break;
+                case 5:
                     EditoraController.buscarEditoraPorNome();
                     break;
                 case 0:

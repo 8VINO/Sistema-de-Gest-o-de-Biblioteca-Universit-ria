@@ -14,6 +14,7 @@ public class menuLivro {
             System.out.println("2 - Listar Livros");
             System.out.println("3 - Editar Livro");
             System.out.println("4 - Deletar Livro");
+            System.out.println("5 - Exibir detalhes do livro");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
 
@@ -21,7 +22,7 @@ public class menuLivro {
             try {
                 opcao = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("Opção inválida! Digite um número.");
+                System.out.println("\nOpção inválida! Digite um número.");
                 continue;
             }
 
@@ -38,11 +39,14 @@ public class menuLivro {
                 case 4:
                     ControllerLivro.removerLivroPorTombo();
                     break;
+                case 5:
+                    ControllerLivro.buscarLivroPorTitulo();
+                    break;
                 case 0:
                     System.out.println("Saindo...");
                     break;
                 default:
-                    System.out.println("Opção inválida.");
+                    System.out.println("\nOpção inválida.");
             }
         } while (opcao != 0);
     }

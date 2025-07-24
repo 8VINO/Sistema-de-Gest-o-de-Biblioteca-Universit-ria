@@ -14,8 +14,9 @@ public class menuCategoria {
             System.out.println("\n   -- Gerenciamento de categorias --");
             System.out.println("1 - Cadastrar categoria");
             System.out.println("2 - Listar categorias");
-            System.out.println("3 - Remover categoria");
-            System.out.println("4 - Buscar categoria por nome");
+            System.out.println("3 - Editar categoria");
+            System.out.println("4 - Deletar categoria");
+            System.out.println("5 - Buscar categoria por nome");
             System.out.println("0 - Voltar ao menu principal");
             System.out.print("Escolha uma opção: ");
 
@@ -34,9 +35,12 @@ public class menuCategoria {
                     CategoriaController.listarCategorias();
                     break;
                 case 3:
-                    CategoriaController.removerCategoriaPorNome();
+                    CategoriaController.editarCategoria();
                     break;
                 case 4:
+                    CategoriaController.removerCategoriaPorNome();
+                    break;
+                case 5:
                     CategoriaController.buscarCategoriaPorNome();
                     break;
                 case 0:

@@ -26,5 +26,9 @@ public class Categoria {
     public void removerLivro(Livro livro) {
         livros.remove(livro);
     }
+
+    public void setNome(String novoNome) {
+        this.nome = novoNome;
+    }
 }
 

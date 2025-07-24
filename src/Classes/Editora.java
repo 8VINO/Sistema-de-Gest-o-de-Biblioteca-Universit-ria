@@ -26,5 +26,9 @@ public class Editora {
     public void removerLivro(Livro livro) {
         livros.remove(livro);
     }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }
 

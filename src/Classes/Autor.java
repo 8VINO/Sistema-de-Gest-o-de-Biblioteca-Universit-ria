@@ -27,4 +27,8 @@ public class Autor {
     public void removerLivro(Livro livro) {
         livros.remove(livro);
     }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }

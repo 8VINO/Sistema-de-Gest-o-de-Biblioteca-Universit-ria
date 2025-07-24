@@ -36,7 +36,7 @@ public class ControllerLivro {
             Autor autor = ControllerAutor.buscarOuCriarAutor(nomeAutor.trim());
             objAutores.add(autor);
         }
-        System.out.println(objAutores.toArray(new Autor[0]));
+
 
         // Editora
         Editora editora = null;
@@ -148,7 +148,7 @@ public class ControllerLivro {
             System.out.println("  Categoria: " + livro.getCategoria().getNome());
             System.out.print("  Autores: ");
             for (Autor autor : livro.getAutores()) {
-                System.out.print(autor.getNome() + " ");
+                System.out.print(autor.getNome() + " | ");
             }
             System.out.println("\n  Disponível: " + (livro.isDisponivel() ? "Sim" : "Não"));
             System.out.println("-------------------------------------------------");

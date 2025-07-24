@@ -77,18 +77,52 @@ public class CategoriaController {
 
         for (Categoria c : categoriasCadastradas) {
             if (c.getNome().equalsIgnoreCase(nome)) {
-                System.out.println("🔎 Categoria encontrada: " + c.getNome());
+                System.out.println("Categoria encontrada: " + c.getNome());
                 System.out.println("Quantidade de livros: " + c.getLivros().size());
                 return;
             }
         }
 
-        System.out.println("❌ Categoria não encontrada.");
+        System.out.println("Categoria não encontrada.");
     }
 
     private static boolean existeCategoria(String nome) {
         return categoriasCadastradas.stream()
                 .anyMatch(c -> c.getNome().equalsIgnoreCase(nome));
+    }
+
+    public static void editarCategoria() {
+        System.out.print("Digite o nome da categoria que deseja editar: ");
+        String nomeAtual = scanner.nextLine();
+
+        Categoria categoriaEncontrada = null;
+        for (Categoria c : categoriasCadastradas) {
+            if (c.getNome().equalsIgnoreCase(nomeAtual)) {
+                categoriaEncontrada = c;
+                break;
+            }
+        }
+
+        if (categoriaEncontrada == null) {
+            System.out.println("Categoria não encontrada.");
+            return;
+        }
+
+        System.out.print("Novo nome para a categoria (ou pressione Enter para manter): ");
+        String novoNome = scanner.nextLine();
+
+        if (novoNome.isBlank()) {
+            System.out.println("Nome mantido.");
+            return;
+        }
+
+        if (existeCategoria(novoNome)) {
+            System.out.println("Já existe uma categoria com esse nome.");
+            return;
+        }
+
+        categoriaEncontrada.setNome(novoNome);
+        System.out.println("Categoria atualizada com sucesso!");
     }
 
     public static List<Categoria> getCategorias() {

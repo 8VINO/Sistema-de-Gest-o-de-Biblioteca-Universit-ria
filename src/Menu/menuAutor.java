@@ -14,15 +14,16 @@ public class menuAutor {
             System.out.println("\n     -- Gerenciamento de Autor --");
             System.out.println("1 - Cadastrar autor");
             System.out.println("2 - Listar autores");
-            System.out.println("3 - Remover autor");
-            System.out.println("4 - Buscar autor por nome");
+            System.out.println("3 - Editar autores");
+            System.out.println("4 - Remover autor");
+            System.out.println("5 - Buscar autor por nome");
             System.out.println("0 - Voltar ao menu principal");
             System.out.print("Escolha uma opção: ");
 
             try {
                 opcao = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("Opção inválida! Digite um número.");
+                System.out.println("\nOpção inválida! Digite um número.");
                 continue;
             }
 
@@ -34,16 +35,19 @@ public class menuAutor {
                     ControllerAutor.listarAutores();
                     break;
                 case 3:
-                    ControllerAutor.removerAutorPorNome();
+                    ControllerAutor.editarAutor();
                     break;
                 case 4:
+                    ControllerAutor.removerAutorPorNome();
+                    break;
+                case 5:
                     ControllerAutor.buscarAutorPorNome();
                     break;
                 case 0:
                     System.out.println("Voltando ao menu principal...");
                     break;
                 default:
-                    System.out.println("Opção inválida. Tente novamente.");
+                    System.out.println("\nOpção inválida. Tente novamente.");
             }
 
         } while (opcao != 0);
