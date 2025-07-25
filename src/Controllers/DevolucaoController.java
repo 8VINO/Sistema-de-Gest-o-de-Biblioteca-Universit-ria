@@ -24,7 +24,7 @@ public class DevolucaoController {
         usuario.devolver(livro);
         livro.setDisponibilidade(true);
 
-        Devolucao devolucao = new Devolucao(usuario.getMatricula(), livro.getLivroId(), LocalDate.now());
+        Devolucao devolucao = new Devolucao(usuario.getMatricula(), livro.getTombo(), LocalDate.now());
         devolucoes.add(devolucao);
 
         System.out.println("Devolução registrada com sucesso.");

@@ -36,5 +36,7 @@ public abstract class Usuario extends Pessoa {
         return livros;
     }
 
-
+    public String getNome(){
+        return nome;
+    }
 }

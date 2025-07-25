@@ -16,24 +16,16 @@ public class EmprestimoController {
 
     public void realizarEmprestimo(Usuario usuario, Livro livro) {
         if (livro.isDisponivel()) {
-            usuario.pegarEmprestado(livro); // adiciona o livro ao usuário
+            usuario.pegarEmprestado(livro);
             Emprestimo e = new Emprestimo(usuario.getMatricula(), livro.getTombo());
-            emprestimos.add(e); // armazena no controle central
-            livro.setDisponibilidade(false); // marca livro como emprestado
+            emprestimos.add(e);
+            livro.setDisponibilidade(false);
             System.out.println("Empréstimo realizado com sucesso!");
         } else {
             System.out.println("Livro indisponível para empréstimo.");
         }
     }
 
-    public void devolverLivro(Usuario usuario, Livro livro) {
-        usuario.devolver(livro);
-        livro.setDisponibilidade(true);
-        // marca como disponível novamente
-        System.out.println("Livro devolvido com sucesso!");
-        // (opcional) remover empréstimo do controle central
-        // ou marcar como devolvido, dependendo da lógica do sistema
-    }
 
     public List<Emprestimo> listarEmprestimos() {
         return emprestimos;
@@ -47,4 +39,6 @@ public class EmprestimoController {
             }
         }
     }
+
+
 }

@@ -7,13 +7,13 @@ import java.util.List;
 public class controllerProfessor {
     private static List<Professor> professores = new ArrayList<>();
 
-    // CREATE
+
     public static void adicionarProfessor(Professor professor) {
         professores.add(professor);
         System.out.println("Professor adicionado com sucesso!");
     }
 
-    // READ
+
     public static Professor buscarProfessorPorId(int id) {
         for (Professor prof : professores) {
             if (prof.getId() == id) return prof;
@@ -31,7 +31,7 @@ public class controllerProfessor {
         }
     }
 
-    // UPDATE
+
     public static boolean atualizarProfessor(int id, String novoNome, String novaFormacao) {
         Professor prof = buscarProfessorPorId(id);
         if (prof != null) {
@@ -44,7 +44,7 @@ public class controllerProfessor {
     }
 
 
-    // DELETE
+
     public static boolean removerProfessor(int id) {
         Professor prof = buscarProfessorPorId(id);
         if (prof != null) {
