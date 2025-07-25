@@ -56,6 +56,7 @@ public class Livro {
     public void setAutores(Autor[] autores) {
         this.autores = autores;
     }
+
     public String getTitulo() {
         return titulo;
     }

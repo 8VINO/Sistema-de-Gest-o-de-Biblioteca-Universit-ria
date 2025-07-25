@@ -26,6 +26,12 @@ public class Categoria  implements Nomeavel, GerenciaLivros {
         livros.add(livro);
     }
 
+    public void adicionarLivro(Livro[] livros) {
+        for (Livro livro : livros) {
+            this.livros.add(livro);
+        }
+    }
+
     public void removerLivro(Livro livro) {
         livros.remove(livro);
     }

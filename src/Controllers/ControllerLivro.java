@@ -154,6 +154,33 @@ public class ControllerLivro {
             System.out.println("-------------------------------------------------");
         }
     }
+
+    public static void listarLivros(String catg) {
+
+        boolean encontrou = false;
+
+        System.out.println("\nLivros da categoria: " + catg + "\n");
+
+        for (Livro livro : livrosCadastrados) {
+            if (livro.getCategoria().getNome().equalsIgnoreCase(catg)) {
+                encontrou = true;
+                System.out.println("  Título: " + livro.getTitulo());
+                System.out.println("  Tombo: " + livro.getTombo());
+                System.out.println("  Editora: " + livro.getEditora().getNome());
+                System.out.print("  Autores: ");
+                for (Autor autor : livro.getAutores()) {
+                    System.out.print(autor.getNome() + " | ");
+                }
+                System.out.println("\n  Disponível: " + (livro.isDisponivel() ? "Sim" : "Não"));
+                System.out.println("-------------------------------------------------");
+            }
+        }
+
+        if (!encontrou) {
+            System.out.println("Nenhum livro encontrado nessa categoria.");
+        }
+    }
+
     public static Livro buscarLivroPorTombo(int tomboParam) {
 
 

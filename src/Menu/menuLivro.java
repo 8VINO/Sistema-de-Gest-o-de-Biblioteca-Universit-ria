@@ -42,6 +42,11 @@ public class menuLivro {
                 case 5:
                     ControllerLivro.buscarLivroPorTitulo();
                     break;
+                case 6:
+                    System.out.print("Digite o nome da categoria: ");
+                    String nomeCategoria = scanner.nextLine();
+                    ControllerLivro.listarLivros(nomeCategoria);
+                    break;
                 case 0:
                     System.out.println("Saindo...");
                     break;
